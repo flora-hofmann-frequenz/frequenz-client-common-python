@@ -6,7 +6,7 @@
 
 ## Upgrading
 
-<!-- Here goes notes on how to upgrade from previous versions, including deprecations and what they should be replaced with -->
+* Upgrading metric `__init__` to names from api-common release [v0.6.0](https://github.com/frequenz-floss/frequenz-api-common/releases/tag/v0.6.0)
 
 ## New Features
 
