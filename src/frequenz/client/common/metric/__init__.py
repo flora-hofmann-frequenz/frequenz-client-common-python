@@ -13,7 +13,18 @@ from frequenz.api.common.v1.metrics.metric_sample_pb2 import Metric as PBMetric
 
 
 class Metric(Enum):
-    """List of supported metrics."""
+    """List of supported metrics.
+
+    AC energy metrics information:
+    * This energy metric is reported directly from the component, and not a
+    result of aggregations in our systems. If a component does not have this
+    metric, this field cannot be populated.
+    * Components that provide energy metrics reset this metric from time to
+    time. This behaviour is specific to each component model. E.g., some
+    components reset it on UTC 00:00:00.
+    * This energy metric does not specify the timestamp since when the energy
+    was being accumulated, and therefore can be inconsistent.
+    """
 
     # Default value
     UNSPECIFIED = PBMetric.METRIC_UNSPECIFIED
@@ -57,7 +68,7 @@ class Metric(Enum):
     AC_POWER_FACTOR_PHASE_2 = PBMetric.METRIC_AC_POWER_FACTOR_PHASE_2
     AC_POWER_FACTOR_PHASE_3 = PBMetric.METRIC_AC_POWER_FACTOR_PHASE_3
 
-    # AC energy metrics
+    # AC energy metrics - Please be careful when using and check Enum docs
     AC_APPARENT_ENERGY = PBMetric.METRIC_AC_APPARENT_ENERGY
     AC_APPARENT_ENERGY_PHASE_1 = PBMetric.METRIC_AC_APPARENT_ENERGY_PHASE_1
     AC_APPARENT_ENERGY_PHASE_2 = PBMetric.METRIC_AC_APPARENT_ENERGY_PHASE_2
